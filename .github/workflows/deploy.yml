@@ -32,6 +32,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3 
         with:
           path: ${{ github.workspace }}/build	
+          name: github-pages
 
   deploy:
     runs-on: ubuntu-latest
