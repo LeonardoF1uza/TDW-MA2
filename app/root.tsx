@@ -30,3 +30,5 @@ export default function App() {
       <Outlet />
   );
 }
+
+export const basename = "/TDW-MA2";
