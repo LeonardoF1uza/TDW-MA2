@@ -1,15 +1,29 @@
-@import "tailwindcss";
+/* Estilos para o componente 'Home/Filters' */
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .filters-container - Equivalente a p-6 (padding de 1.5rem ou 24px) */
+.filters-container {
+  padding: 1.5rem;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+/* .main-header - Equivalente a flex items-center justify-between mb-6 */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+/* .header-title - Equivalente a text-2xl font-bold */
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* .meals-section - Equivalente a mt-6 */
+.meals-section {
+  margin-top: 1.5rem;
 }
