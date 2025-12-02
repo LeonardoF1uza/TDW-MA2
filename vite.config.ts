@@ -3,9 +3,9 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const repoName = 'TDW-MA2'; 
+const repoName = ''; 
 
 export default defineConfig({
-  base: `/${repoName}/`, 
+  base: `/`, 
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 }); 

@@ -1,6 +1,6 @@
 // app/root.tsx
 import './app.css';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -24,4 +24,9 @@ export function Layout() {
   );
 }
 
-export const basename = "/TDW-MA2";
+
+export default function App() {
+  return (
+      <Outlet />
+  );
+}
