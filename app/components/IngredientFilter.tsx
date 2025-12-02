@@ -93,7 +93,7 @@ export default function IngredientFilter() {
 
 const Style: Record<string, CSSProperties> = {
     container: { display: "flex", flexDirection: "column", gap: "0.5rem", alignItems: "center", justifyContent: "center" },
-    containerIngredients: { display: "flex", flexWrap: "wrap", gap: "8px", maxWidth: "400px", justifyContent: "center", alignItems: "center" },
+    containerIngredients: { display: "flex", flexWrap: "wrap", gap: "8px", width: "400px", justifyContent: "start", alignItems: "center" },
     containerinputs: { display: "flex", gap: "8px", },
     input: { padding: "0.5rem", cursor: "pointer", borderRadius: "50px", width: "200px" },
     ingredient: { paddingLeft: "10px", borderRight:"0",gap:'10px', cursor: "pointer", borderRadius: "50px" },

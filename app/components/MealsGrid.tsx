@@ -10,7 +10,7 @@ export default function MealsGrid({ meals }: { meals: any[] }) {
 
     const [page, setPage] = useState(1);
 
-    const perPage = 10;
+    const perPage = 9;
     const start = (page - 1) * perPage;
     const end = start + perPage;
     const paginatedMeals = meals.slice(start, end);
