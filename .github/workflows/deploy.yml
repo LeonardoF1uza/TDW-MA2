@@ -29,9 +29,10 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3 
         with:
-          path: dist  
+          path: ${{ github.workspace }}/build	
+          name: github-pages
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,6 +43,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Wait for artifact to be available
+        run: sleep 15
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
