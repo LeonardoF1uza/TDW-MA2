@@ -1,6 +1,6 @@
 // app/root.tsx
 import './app.css';
-import { Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -21,13 +21,6 @@ export function Layout() {
         <Scripts />
       </body>
     </html>
-  );
-}
-
-
-export default function App() {
-  return (
-      <Outlet />
   );
 }
 
