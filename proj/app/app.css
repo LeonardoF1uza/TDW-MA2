@@ -4,26 +4,4 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .filters-container - Equivalente a p-6 (padding de 1.5rem ou 24px) */
-.filters-container {
-  padding: 1.5rem;
-}
 
-/* .main-header - Equivalente a flex items-center justify-between mb-6 */
-.main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-/* .header-title - Equivalente a text-2xl font-bold */
-.header-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* .meals-section - Equivalente a mt-6 */
-.meals-section {
-  margin-top: 1.5rem;
-}

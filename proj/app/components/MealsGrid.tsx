@@ -1,61 +1,60 @@
-// src/components/MealsGrid.tsx
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import MealCard from "./MealCard";
 import Pagination from "./Pagination";
 
 export default function MealsGrid({ meals }: { meals: any[] }) {
-    if (!meals || meals.length === 0) return <p>Nenhuma refeição encontrada.</p>;
+    if (!meals || meals.length === 0) return
+    <div style={Style.container}>
+        <p>Nenhuma receita encontrada.</p>
+    </div>
 
     const [page, setPage] = useState(1);
-    const perPage = 6;
 
-    // Cálculo da paginação
+    const perPage = 10;
     const start = (page - 1) * perPage;
     const end = start + perPage;
     const paginatedMeals = meals.slice(start, end);
 
     return (
-        <div style={{ marginTop: "2rem" }}>
-            <div className="meals-grid">
+        <div style={Style.container}>
+            <div style={Style.grid}>
                 {paginatedMeals.map((m) => (
-                    <MealCard key={m.idMeal} meal={m} />
+                    <div key={m.idMeal} style={Style.cardWrapper}>
+                        <MealCard meal={m} />
+                    </div>
                 ))}
             </div>
 
             <Pagination
                 page={page}
                 setPage={setPage}
-                total={meals.length}   // total correto
+                total={meals.length}
                 perPage={perPage}
             />
         </div>
     );
 }
 
-/* ======== STYLES ======== */
-const styles = `
-.meals-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
+const Style: Record<string, CSSProperties> = {
+    container: {
+        marginTop: "2rem",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
 
-@media (min-width: 640px) {
-  .meals-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    grid: {
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "8px",
+        width: "100%",
+    },
 
-@media (min-width: 768px) {
-  .meals-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-`;
+    cardWrapper: {
+        gap: "8px",
+        maxWidth: "300px",
+    },
 
-// Injeta estilos no documento quando o componente é importado
-if (typeof document !== "undefined") {
-    const styleTag = document.createElement("style");
-    styleTag.innerHTML = styles;
-    document.head.appendChild(styleTag);
-}
+};

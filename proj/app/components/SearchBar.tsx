@@ -1,29 +1,42 @@
-// src/components/SearchBar.tsx
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { searchMeals } from "~/redux/mealsSlice";
-import type { AppDispatch } from "~/redux/store";
+import { useState, type CSSProperties } from "react";
 
-export default function SearchBar() {
-  const dispatch = useDispatch<AppDispatch>();
-  const [query, setQuery] = useState("");
+export default function SearchBar({ onResults }: { onResults: (meals: any[]) => void }) {
+    const [search, setSearch] = useState("");
 
-  return (
-    <div className="flex gap-2">
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="border px-4 py-2 rounded"
-        placeholder="Pesquisar refeição..."
-      />
-      <button
-        onClick={() => {
-          if (query.trim()) dispatch(searchMeals(query.trim()));
-        }}
-        className="bg-green-600 text-white px-4 py-2 rounded"
-      >
-        Pesquisar
-      </button>
-    </div>
-  );
+    const fetchMeals = async () => {
+        if (!search.trim()) {
+            onResults([]);
+            return;
+        }
+
+        const res = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
+        );
+        const data = await res.json();
+
+        onResults(data.meals || []);
+    };
+
+    return (
+        <div style={Style.container}>
+            <input
+                type="text"
+                placeholder="Ex: chicken..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={Style.input}
+            />
+
+            <button onClick={fetchMeals} style={Style.button}>Pesquisar</button>
+        </div>
+    );
 }
+
+
+const Style: Record<string, CSSProperties> = {
+    container: { marginBottom: "1rem", gap: "0.5rem", display: "flex", alignItems: "center", justifyContent: "cente" },
+    input: { padding: "0.5rem", cursor: "pointer", borderRadius: "50px", width: "300px" },
+    button: { backgroundColor: "white", border: "2px solid #000", padding: "0.5rem 1rem", cursor: "pointer", borderRadius: "50px" }
+};
+
+

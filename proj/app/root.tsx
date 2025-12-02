@@ -1,5 +1,5 @@
 // app/root.tsx
-import './app.css'; 
+import './app.css';
 import { Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
@@ -27,15 +27,6 @@ export function Layout() {
 
 export default function App() {
   return (
-    <>
-      <header>
-        <nav>
-          <Link to="/home">Início</Link> | <Link to="/filters">Filtros</Link>
-        </nav>
-      </header>
-
       <Outlet />
-
-    </>
   );
 }
