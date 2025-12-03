@@ -25,4 +25,10 @@ export function Layout() {
 }
 
 
+export default function App() {
+  return (
+      <Outlet />
+  );
+}
+
 const basename = '/TDW-MA2';
